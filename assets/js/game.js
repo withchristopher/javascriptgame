@@ -1,1 +1,7 @@
-window.alert("This is an alert! Javascript is running!");
+// this creates a function named fight
+
+function fight() {
+  window.alert("This fight has begun!");
+}
+
+fight();
