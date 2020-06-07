@@ -5,6 +5,7 @@
 // "LOSE" - Player robot's health is zero or less
 
 var enemyNames = ["Roberto", "Android", "Blackberry", "iOS"];
+var playerNames = ["Bruce", "Panthar", "Stark"];
 
 console.log(enemyNames);
 var playerName = window.prompt("What is your robot's email");
