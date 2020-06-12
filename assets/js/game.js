@@ -7,7 +7,10 @@
 var enemyNames = ["Roberto", "Android", "Blackberry", "iOS"];
 var playerNames = ["Bruce", "Panthar", "Stark"];
 
-console.log(enemyNames);
+enemyNames[0];
+enemyNames[1];
+enemyNames[2];
+
 var playerName = window.prompt("What is your robot's email");
 var playerHealth = 100;
 var playerAttack = 10;
