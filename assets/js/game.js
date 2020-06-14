@@ -33,7 +33,7 @@ var fight = function(enemyName) {
             if (confirmSkip) {
                 window.alert(playerName + " has decided to quit this fight. Goodbye");
                 //subtract money from player
-                playerMoney = playerMoney - 10;
+                playerMoney = Math.max(0, playerMoney - 10);
                 console.log('playerMoney', playerMoney);
                 // Would you like to refill, upgrade or leave the store?
                 // Prompt user to input one of the above options
@@ -41,8 +41,8 @@ var fight = function(enemyName) {
             } // if no (false), ask question agin about running fight()
         }
 
-        //remove enemyHealth from playerAttach
-        enemyHealth = enemyHealth - playerAttack;
+        //remove enemyHealth from playerAttack
+        enemyHealth = Math.max(0, enemyHealth - playerAttack);
         console.log(
             playerName +
             " attacked " +
@@ -63,7 +63,7 @@ var fight = function(enemyName) {
         }
 
         // remove player's health by subtracting the amount set in the enemyAttack variable
-        playerHealth = playerHealth - enemyAttack;
+        playerHealth = Math.max(playerHealth - enemyAttack);
         console.log(
             enemyName +
             " attacked " +
@@ -176,7 +176,7 @@ var startGame = function() {
             var pickedEnemyName = enemyNames[i];
 
             // reset the enemyHealth to 50
-            enemyHealth = 50;
+            enemyHealth = Math.floor(Math.random() * 60);
 
             // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
             fight(pickedEnemyName);
@@ -202,9 +202,3 @@ var startGame = function() {
 };
 
 startGame();
-
-
-
-// Finalize MVP and switch branches
-
-// save our progress by using Git
