@@ -108,7 +108,40 @@ var endGame = function() {
 
 // add shop() function 
 var shop = function() {
-    console.log("entering the shop");
+    //ask the player what they would like to do?
+    var showOptionPrompt = window.prompt("Would you like to REFILL your health, UPGRADE your attach, or LEAVE the store? Please enter the action word to make a choice.");
+
+    // switch for answers to above prompt
+    switch (showOptionPrompt) {
+        case "refill":
+            window.alert("Refilling players health by 20 for 7 dollars.");
+
+            //increase the players health
+            playerHealth = playerHealth + 20;
+            playerMoney = playerMoney - 7;
+            break;
+
+        case "upgrade":
+            window.alert("Upgrading the player's attack by 6 for 7 dollars.");
+
+            //increase players attach by 6
+            playerAttack = playerAttack + 6;
+            playerMoney = playerMoney - 7;
+            break;
+
+        case "leave":
+            window.alert("Leaving the store");
+
+            // do nothing, so function will end
+            break;
+
+        default:
+            window.alert("You did not pick a valid option. Try again.");
+
+            // all shop()
+            shop();
+            break;
+    }
 };
 
 
@@ -135,7 +168,15 @@ var startGame = function() {
 
             // if we're not at the last enemy in the array
             if (playerHealth > 0 && i < enemyNames.length - 1) {
-                shop();
+
+                // storeConfrim, prompt if the user would like to visit the store
+                var storeConfirm = window.confirm("Woudl you like to visit the store?")
+
+
+                // if yes, take them to the shop() function
+                if (storeConfirm) {
+                    shop();
+                }
             }
         } else {
             window.alert("You have lost your robot player in battle! Game Over!");
