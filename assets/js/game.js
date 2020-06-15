@@ -15,6 +15,14 @@ console.log(playerName, playerAttack, playerHealth);
 var enemyNames = ["Roberto", "Android", "Blackberry", "iOS"];
 var enemyAttack = 10;
 
+
+// random number assigned to health
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1) + min);
+
+    return value;
+}
+
 // function expression
 var fight = function(enemyName) {
 
@@ -42,7 +50,9 @@ var fight = function(enemyName) {
         }
 
         //remove enemyHealth from playerAttack
-        enemyHealth = Math.max(0, enemyHealth - playerAttack);
+        var damage = randomNumber(playerAttack - 3, playerAttack);
+
+        enemyHealth = Math.max(0, enemyHealth - damage);
         console.log(
             playerName +
             " attacked " +
@@ -160,6 +170,7 @@ var shop = function() {
 };
 
 
+
 //function to start a new game
 var startGame = function() {
     //reset player stats
@@ -176,7 +187,7 @@ var startGame = function() {
             var pickedEnemyName = enemyNames[i];
 
             // reset the enemyHealth to 50
-            enemyHealth = Math.floor(Math.random() * 60);
+            enemyHealth = randomNumber(40, 60);
 
             // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
             fight(pickedEnemyName);
