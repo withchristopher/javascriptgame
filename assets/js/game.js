@@ -92,9 +92,13 @@ var fightOrSkip = function () {
   return false;
 };
 
-// function expression
+// fight function expression
 var fight = function (enemy) {
-  console.log(enemy);
+  // player turn functionn
+  var isPlayerTurn = true;
+  if (Math.random() > 0.5) {
+    isPlayerTurn = false;
+  }
 
   //execute a while loop as long as enemy robot is alive
   while (enemy.health > 0 && playerInfo.health > 0) {
@@ -146,7 +150,9 @@ var fight = function (enemy) {
         playerInfo.name + " still has " + playerInfo.health + " health left."
       );
     }
-    // Would you like to play another round?
+  }
+
+  isPlayerTurn = !isPlayerTurn;
   }
 };
 
