@@ -18,6 +18,7 @@ var getPlayerName = function () {
   while (name === "" || name === null) {
     name = prompt("What is your robot's name?");
   }
+  return name;
 };
 
 var playerInfo = {
@@ -64,35 +65,42 @@ var enemy = [
   },
 ];
 
+var fightOrSkip = function () {
+  var promptFight = window.prompt(
+    "Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose."
+  );
+  promptFight = promptFight.toLowerCase();
+
+  //if user picks skip confirm and then stop the loop
+  if (promptFight === "skip") {
+    //confirm the user wants to skip
+    var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+
+    //if yes (true), leave the fight
+    if (confirmSkip) {
+      window.alert(
+        playerInfo.name + " has decided to quit this fight. Goodbye"
+      );
+      //subtract money from player
+      playerInfo.money = Math.max(0, playerInfo.money - 10);
+
+      // Would you like to refill, upgrade or leave the store?
+      // Prompt user to input one of the above options
+      return true;
+    } // if no (false), ask question agin about running fight()
+  }
+  return false;
+};
+
 // function expression
 var fight = function (enemy) {
   console.log(enemy);
 
   //execute a while loop as long as enemy robot is alive
   while (enemy.health > 0 && playerInfo.health > 0) {
-    var promptFight = window.prompt(
-      "Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose."
-    );
-
-    //if user picks skip confirm and then stop the loop
-    if (promptFight === "skip" || promptFight === "SKIP") {
-      //confirm the user wants to skip
-      var confirmSkip = window.confirm("Are you sure you'd like to quit?");
-
-      //if yes (true), leave the fight
-      if (confirmSkip) {
-        window.alert(
-          playerInfo.name + " has decided to quit this fight. Goodbye"
-        );
-        //subtract money from player
-        playerInfo.money = Math.max(0, playerInfo.money - 10);
-        console.log("playerInfo.money", playerInfo.money);
-        // Would you like to refill, upgrade or leave the store?
-        // Prompt user to input one of the above options
-        break;
-      } // if no (false), ask question agin about running fight()
+    if (fightOrSkip()) {
+      break;
     }
-
     //remove enemy.health from playerInfo.attack
     var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
