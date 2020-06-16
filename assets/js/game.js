@@ -153,7 +153,6 @@ var fight = function (enemy) {
   }
 
   isPlayerTurn = !isPlayerTurn;
-  }
 };
 
 // Add endGame() function
