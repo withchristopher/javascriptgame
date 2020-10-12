@@ -1,6 +1,7 @@
 # Gladiator Game!
 
-## This is Gladiator Robot Game where your robot will battle against 3 enemy robots.
+### Description
+This is Gladiator Robot Game where your robot will battle against 3 enemy robots.
 
 ### Structure of Robot Gladiators:
 
